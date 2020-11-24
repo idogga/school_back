@@ -13,6 +13,8 @@ using Microsoft.Extensions.Logging;
 
 namespace SchoolServerMain
 {
+    using School.BL;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -26,6 +28,8 @@ namespace SchoolServerMain
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddBLService();
+            services.AddMappers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
