@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace SchoolServerMain
+﻿namespace SchoolServerMain.Controllers
 {
-    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Mvc;
 
-    using School.AbstractService;
     using School.BL;
+    using School.BL.Place;
     using School.Dto;
 
     [Route("api/[controller]")]
@@ -15,7 +13,6 @@ namespace SchoolServerMain
             CabinetService crudService)
             : base(mapper, crudService)
         {
-
         }
     }
 }

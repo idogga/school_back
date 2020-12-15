@@ -1,6 +1,6 @@
 ﻿namespace School.Dto
 {
-    public class CabineteDto : BaseDto
+    public class TeacherDto : BaseDto
     {
         public string Name { get; set; }
     }

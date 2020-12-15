@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace School.BL
+﻿namespace School.BL.Place
 {
     using School.AbstractService;
     using School.Dto;
 
-    public class CabineteMapper: MapperService<CabineteDto, Cabinete>
+    public class CabineteMapper : MapperService<CabineteDto, Cabinete>
     {
         public override CabineteDto ConvertToDto(Cabinete model)
         {
