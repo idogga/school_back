@@ -20,7 +20,7 @@ namespace School.BL
             throw new NotImplementedException();
         }
 
-        public override Task<Cabinete> UpdateAsync(Cabinete model)
+        public override Task UpdateAsync(Cabinete model)
         {
             throw new NotImplementedException();
         }

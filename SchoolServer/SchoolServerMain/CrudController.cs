@@ -6,6 +6,11 @@
 
     using School.AbstractService;
 
+    /// <summary>
+    /// ffffff
+    /// </summary>
+    /// <typeparam name="TDto"></typeparam>
+    /// <typeparam name="TModel"></typeparam>
     public abstract class CrudController<TDto, TModel> : ControllerBase
     {
         protected readonly MapperService<TDto, TModel> _mapper;
@@ -18,28 +23,51 @@
             _service = service;
         }
 
+        /// <summary>
+        /// Создать.
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        [HttpPost]
         public virtual Task<string> CreateAsync(TDto dto)
         {
             var model = _mapper.ConvertToModel(dto);
             return _service.CreateAsync(model);
         }
 
+        /// <summary>
+        /// Удалить.
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        [HttpDelete]
         public virtual Task DeleteAsync(string id)
         {
             return _service.DeleteAsync(id);
         }
 
+        /// <summary>
+        /// Считать.
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        [HttpGet]
         public virtual async Task<TDto> ReadAsync(string id)
         {
             var model = await _service.ReadAsync(id);
             return _mapper.ConvertToDto(model);
         }
 
-        public virtual async Task<TDto> UpdateAsync(TDto dto)
+        /// <summary>
+        /// Обновить.
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        [HttpPut]
+        public virtual async Task UpdateAsync(TDto dto)
         {
             var modelToUpdate = _mapper.ConvertToModel(dto);
-            var model = await _service.UpdateAsync(modelToUpdate);
-            return _mapper.ConvertToDto(model);
+            await _service.UpdateAsync(modelToUpdate);
         }
     }
 }

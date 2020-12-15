@@ -13,6 +13,8 @@ using Microsoft.Extensions.Logging;
 
 namespace SchoolServerMain
 {
+    using Microsoft.OpenApi.Models;
+
     using School.BL;
 
     public class Startup
@@ -30,6 +32,14 @@ namespace SchoolServerMain
             services.AddControllers();
             services.AddBLService();
             services.AddMappers();
+            services.AddSwaggerGen(
+                c =>
+                    c.SwaggerDoc(
+                        "v1",
+                        new OpenApiInfo
+                        {
+                            Title = "School", Version = "v1"
+                        }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +50,8 @@ namespace SchoolServerMain
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Shool API"));
             app.UseHttpsRedirection();
 
             app.UseRouting();
