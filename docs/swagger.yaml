@@ -1,0 +1,1031 @@
+Info:
+  Title: School
+  Version: v1
+  Extensions: {}
+Servers: []
+Paths:
+  /api/Cabinete:
+    Operations:
+      Post:
+        Tags:
+        - Name: Cabinete
+          Extensions: {}
+        Parameters:
+        - Name: Name
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        - Name: Id
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        Responses:
+          200:
+            Description: Success
+            Headers: {}
+            Content:
+              text/plain:
+                Schema:
+                  Type: string
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+              application/json:
+                Schema:
+                  Type: string
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+              text/json:
+                Schema:
+                  Type: string
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+            Links: {}
+            Extensions: {}
+        Callbacks: {}
+        Security: []
+        Servers: []
+        Extensions: {}
+      Delete:
+        Tags:
+        - Name: Cabinete
+          Extensions: {}
+        Parameters:
+        - Name: id
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        Responses:
+          200:
+            Description: Success
+            Headers: {}
+            Content: {}
+            Links: {}
+            Extensions: {}
+        Callbacks: {}
+        Security: []
+        Servers: []
+        Extensions: {}
+      Get:
+        Tags:
+        - Name: Cabinete
+          Extensions: {}
+        Parameters:
+        - Name: id
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        Responses:
+          200:
+            Description: Success
+            Headers: {}
+            Content:
+              text/plain:
+                Schema:
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                  Reference:
+                    Type: Schema
+                    Id: CabineteDto
+                    IsLocal: true
+                    ReferenceV3: '#/components/schemas/CabineteDto'
+                    ReferenceV2: '#/definitions/CabineteDto'
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+              application/json:
+                Schema:
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                  Reference:
+                    Type: Schema
+                    Id: CabineteDto
+                    IsLocal: true
+                    ReferenceV3: '#/components/schemas/CabineteDto'
+                    ReferenceV2: '#/definitions/CabineteDto'
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+              text/json:
+                Schema:
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                  Reference:
+                    Type: Schema
+                    Id: CabineteDto
+                    IsLocal: true
+                    ReferenceV3: '#/components/schemas/CabineteDto'
+                    ReferenceV2: '#/definitions/CabineteDto'
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+            Links: {}
+            Extensions: {}
+        Callbacks: {}
+        Security: []
+        Servers: []
+        Extensions: {}
+      Put:
+        Tags:
+        - Name: Cabinete
+          Extensions: {}
+        Parameters:
+        - Name: Name
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        - Name: Id
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        Responses:
+          200:
+            Description: Success
+            Headers: {}
+            Content: {}
+            Links: {}
+            Extensions: {}
+        Callbacks: {}
+        Security: []
+        Servers: []
+        Extensions: {}
+    Servers: []
+    Parameters: []
+    Extensions: {}
+  /api/Class:
+    Operations:
+      Post:
+        Tags:
+        - Name: Class
+          Extensions: {}
+        Parameters:
+        - Name: Litera
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        - Name: Id
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        Responses:
+          200:
+            Description: Success
+            Headers: {}
+            Content:
+              text/plain:
+                Schema:
+                  Type: string
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+              application/json:
+                Schema:
+                  Type: string
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+              text/json:
+                Schema:
+                  Type: string
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+            Links: {}
+            Extensions: {}
+        Callbacks: {}
+        Security: []
+        Servers: []
+        Extensions: {}
+      Delete:
+        Tags:
+        - Name: Class
+          Extensions: {}
+        Parameters:
+        - Name: id
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        Responses:
+          200:
+            Description: Success
+            Headers: {}
+            Content: {}
+            Links: {}
+            Extensions: {}
+        Callbacks: {}
+        Security: []
+        Servers: []
+        Extensions: {}
+      Get:
+        Tags:
+        - Name: Class
+          Extensions: {}
+        Parameters:
+        - Name: id
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        Responses:
+          200:
+            Description: Success
+            Headers: {}
+            Content:
+              text/plain:
+                Schema:
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                  Reference:
+                    Type: Schema
+                    Id: ClassDto
+                    IsLocal: true
+                    ReferenceV3: '#/components/schemas/ClassDto'
+                    ReferenceV2: '#/definitions/ClassDto'
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+              application/json:
+                Schema:
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                  Reference:
+                    Type: Schema
+                    Id: ClassDto
+                    IsLocal: true
+                    ReferenceV3: '#/components/schemas/ClassDto'
+                    ReferenceV2: '#/definitions/ClassDto'
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+              text/json:
+                Schema:
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                  Reference:
+                    Type: Schema
+                    Id: ClassDto
+                    IsLocal: true
+                    ReferenceV3: '#/components/schemas/ClassDto'
+                    ReferenceV2: '#/definitions/ClassDto'
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+            Links: {}
+            Extensions: {}
+        Callbacks: {}
+        Security: []
+        Servers: []
+        Extensions: {}
+      Put:
+        Tags:
+        - Name: Class
+          Extensions: {}
+        Parameters:
+        - Name: Litera
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        - Name: Id
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        Responses:
+          200:
+            Description: Success
+            Headers: {}
+            Content: {}
+            Links: {}
+            Extensions: {}
+        Callbacks: {}
+        Security: []
+        Servers: []
+        Extensions: {}
+    Servers: []
+    Parameters: []
+    Extensions: {}
+  /api/Subject:
+    Operations:
+      Post:
+        Tags:
+        - Name: Subject
+          Extensions: {}
+        Parameters:
+        - Name: Name
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        - Name: Id
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        Responses:
+          200:
+            Description: Success
+            Headers: {}
+            Content:
+              text/plain:
+                Schema:
+                  Type: string
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+              application/json:
+                Schema:
+                  Type: string
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+              text/json:
+                Schema:
+                  Type: string
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+            Links: {}
+            Extensions: {}
+        Callbacks: {}
+        Security: []
+        Servers: []
+        Extensions: {}
+      Delete:
+        Tags:
+        - Name: Subject
+          Extensions: {}
+        Parameters:
+        - Name: id
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        Responses:
+          200:
+            Description: Success
+            Headers: {}
+            Content: {}
+            Links: {}
+            Extensions: {}
+        Callbacks: {}
+        Security: []
+        Servers: []
+        Extensions: {}
+      Get:
+        Tags:
+        - Name: Subject
+          Extensions: {}
+        Parameters:
+        - Name: id
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        Responses:
+          200:
+            Description: Success
+            Headers: {}
+            Content:
+              text/plain:
+                Schema:
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                  Reference:
+                    Type: Schema
+                    Id: SubjectDto
+                    IsLocal: true
+                    ReferenceV3: '#/components/schemas/SubjectDto'
+                    ReferenceV2: '#/definitions/SubjectDto'
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+              application/json:
+                Schema:
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                  Reference:
+                    Type: Schema
+                    Id: SubjectDto
+                    IsLocal: true
+                    ReferenceV3: '#/components/schemas/SubjectDto'
+                    ReferenceV2: '#/definitions/SubjectDto'
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+              text/json:
+                Schema:
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                  Reference:
+                    Type: Schema
+                    Id: SubjectDto
+                    IsLocal: true
+                    ReferenceV3: '#/components/schemas/SubjectDto'
+                    ReferenceV2: '#/definitions/SubjectDto'
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+            Links: {}
+            Extensions: {}
+        Callbacks: {}
+        Security: []
+        Servers: []
+        Extensions: {}
+      Put:
+        Tags:
+        - Name: Subject
+          Extensions: {}
+        Parameters:
+        - Name: Name
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        - Name: Id
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        Responses:
+          200:
+            Description: Success
+            Headers: {}
+            Content: {}
+            Links: {}
+            Extensions: {}
+        Callbacks: {}
+        Security: []
+        Servers: []
+        Extensions: {}
+    Servers: []
+    Parameters: []
+    Extensions: {}
+  /api/Teacher:
+    Operations:
+      Post:
+        Tags:
+        - Name: Teacher
+          Extensions: {}
+        Parameters:
+        - Name: Name
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        - Name: Id
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        Responses:
+          200:
+            Description: Success
+            Headers: {}
+            Content:
+              text/plain:
+                Schema:
+                  Type: string
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+              application/json:
+                Schema:
+                  Type: string
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+              text/json:
+                Schema:
+                  Type: string
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+            Links: {}
+            Extensions: {}
+        Callbacks: {}
+        Security: []
+        Servers: []
+        Extensions: {}
+      Delete:
+        Tags:
+        - Name: Teacher
+          Extensions: {}
+        Parameters:
+        - Name: id
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        Responses:
+          200:
+            Description: Success
+            Headers: {}
+            Content: {}
+            Links: {}
+            Extensions: {}
+        Callbacks: {}
+        Security: []
+        Servers: []
+        Extensions: {}
+      Get:
+        Tags:
+        - Name: Teacher
+          Extensions: {}
+        Parameters:
+        - Name: id
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+        Responses:
+          200:
+            Description: Success
+            Headers: {}
+            Content:
+              text/plain:
+                Schema:
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                  Reference:
+                    Type: Schema
+                    Id: TeacherDto
+                    IsLocal: true
+                    ReferenceV3: '#/components/schemas/TeacherDto'
+                    ReferenceV2: '#/definitions/TeacherDto'
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+              application/json:
+                Schema:
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                  Reference:
+                    Type: Schema
+                    Id: TeacherDto
+                    IsLocal: true
+                    ReferenceV3: '#/components/schemas/TeacherDto'
+                    ReferenceV2: '#/definitions/TeacherDto'
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+              text/json:
+                Schema:
+                  AllOf: []
+                  OneOf: []
+                  AnyOf: []
+                  Required: []
+                  Properties: {}
+                  AdditionalPropertiesAllowed: true
+                  Enum: []
+                  Extensions: {}
+                  Reference:
+                    Type: Schema
+                    Id: TeacherDto
+                    IsLocal: true
+                    ReferenceV3: '#/components/schemas/TeacherDto'
+                    ReferenceV2: '#/definitions/TeacherDto'
+                Examples: {}
+                Encoding: {}
+                Extensions: {}
+            Links: {}
+            Extensions: {}
+        Callbacks: {}
+        Security: []
+        Servers: []
+        Extensions: {}
+      Put:
+        Tags:
+        - Name: Teacher
+          Extensions: {}
+        Parameters:
+        - Name: Name
+          In: Query
+          Schema:
+            Type: string
+            AllOf: []
+            OneOf: []
+            AnyOf: []
+            Required: []
+            Properties: {}
+            AdditionalPropertiesAllowed: true
+            Enum: []
+            Nullable: true
+            Extensions: {}
+          Examples: {}
+          Content: {}
+          Extensions: {}
+     

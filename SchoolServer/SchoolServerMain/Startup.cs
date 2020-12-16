@@ -1,5 +1,8 @@
 namespace SchoolServerMain
 {
+    using System;
+    using System.IO;
+
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -8,6 +11,8 @@ namespace SchoolServerMain
     using Microsoft.OpenApi.Models;
 
     using School.BL;
+
+    using Swashbuckle.AspNetCore.SwaggerGen;
 
     public class Startup
     {
@@ -42,12 +47,30 @@ namespace SchoolServerMain
             services.AddMappers();
             services.AddSwaggerGen(
                 c =>
-                    c.SwaggerDoc(
-                        "v1",
-                        new OpenApiInfo
-                        {
-                            Title = "School", Version = "v1"
-                        }));
+                {
+                    c.SwaggerDoc("v1", new OpenApiInfo { Title = "School", Version = "v1" });
+                    c.DocumentFilter<YamlDocumentFilter>();
+                });
+
+        }
+
+        private class YamlDocumentFilter : IDocumentFilter
+        {
+            public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)
+            {
+                string file = AppDomain.CurrentDomain.BaseDirectory + "swagger.yaml";
+                if (File.Exists(file))
+                    File.Delete(file);
+
+                    var serializer = new YamlDotNet.Serialization.Serializer();
+                    using (var writer = new StringWriter())
+                    {
+                        serializer.Serialize(writer, swaggerDoc);
+                        var stream = new StreamWriter(file);
+                        stream.WriteLine(writer.ToString());
+                    }
+                
+            }
         }
     }
 }
