@@ -29,7 +29,7 @@ namespace SchoolServerMain
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Shool API"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v2/swagger.json", "Shool API"));
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -48,7 +48,7 @@ namespace SchoolServerMain
             services.AddSwaggerGen(
                 c =>
                 {
-                    c.SwaggerDoc("v1", new OpenApiInfo { Title = "School", Version = "v1" });
+                    c.SwaggerDoc("v2", new OpenApiInfo { Title = "School", Version = "v2" });
                     c.DocumentFilter<YamlDocumentFilter>();
                 });
 
