@@ -4,12 +4,28 @@
     using System.Threading.Tasks;
 
     using School.AbstractService;
+    using School.Database;
 
     public class TeacherService : CrudService<Teacher>
     {
-        public override Task<string> CreateAsync(Teacher model)
+        private readonly SchoolContext _context;
+
+        public TeacherService(SchoolContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+
+        public override async Task<string> CreateAsync(Teacher model)
+        {
+            if (!string.IsNullOrEmpty(model.Id))
+                throw new Exception("oh id");
+            model.Id = Guid.NewGuid().ToString();
+            if (string.IsNullOrEmpty(model.Name))
+                throw new Exception("oh name");
+
+            await _context.Teachers.AddAsync(model);
+            await _context.SaveChangesAsync();
+            return model.Id;
         }
 
         public override Task DeleteAsync(string id)

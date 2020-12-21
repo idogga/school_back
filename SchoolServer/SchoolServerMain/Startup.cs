@@ -1,13 +1,17 @@
 namespace SchoolServerMain
 {
+    using System.Diagnostics;
+
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
 
     using School.BL;
+    using School.Database;
 
     public class Startup
     {
@@ -48,6 +52,12 @@ namespace SchoolServerMain
                         {
                             Title = "School", Version = "v1"
                         }));
+
+            var sqlConnectionString = Configuration.GetConnectionString("BaseSchoolPostgreSqlProvider");
+
+            services.AddDbContext<SchoolContext>(
+                options =>
+                    options.UseNpgsql(sqlConnectionString).ConfigureWarnings(x => Debug.WriteLine($"Œ¯Ë·Í‡ ¡ƒ: {x}")));
         }
     }
 }

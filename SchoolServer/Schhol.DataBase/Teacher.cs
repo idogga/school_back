@@ -1,9 +1,9 @@
-﻿namespace School.BL.Professor
+﻿namespace Schhol.DataBase
 {
     /// <summary>
     /// Учитель.
     /// </summary>
-    public class Teacher : BaseModel
+    public class Teacher 
     {
         /// <summary>
         /// Имя.

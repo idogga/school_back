@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Mvc;
 
     using School.BL.Professor;
+    using School.Database;
     using School.Dto;
 
     [Route("api/[controller]")]

@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
 
     using School.AbstractService;
+    using School.Database;
 
     public class ClassService : CrudService<Class>
     {

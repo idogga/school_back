@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\School.AbstractService\School.AbstractService.csproj" />
+    <ProjectReference Include="..\School.Database\School.Database.csproj" />
     <ProjectReference Include="..\School.Dto\School.Dto.csproj" />
   </ItemGroup>
 

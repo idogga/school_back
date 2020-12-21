@@ -1,4 +1,4 @@
-﻿namespace School.BL
+﻿namespace School.Database
 {
     public abstract class BaseModel
     {

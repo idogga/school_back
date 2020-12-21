@@ -1,4 +1,4 @@
-﻿namespace School.BL.Place
+﻿namespace School.Database
 {
     /// <summary>
     /// Кабинет.

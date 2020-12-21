@@ -1,20 +1,27 @@
 ﻿namespace School.BL.Professor
 {
-    using System;
-
     using School.AbstractService;
+    using School.Database;
     using School.Dto;
 
     public class TeacherMapper : MapperService<TeacherDto, Teacher>
     {
         public override TeacherDto ConvertToDto(Teacher model)
         {
-            throw new NotImplementedException();
+            return new TeacherDto
+            {
+                Id = model.Id,
+                Name = model.Name
+            };
         }
 
         public override Teacher ConvertToModel(TeacherDto dto)
         {
-            throw new NotImplementedException();
+            return new Teacher
+            {
+                Id = dto.Id,
+                Name = dto.Name
+            };
         }
     }
 }

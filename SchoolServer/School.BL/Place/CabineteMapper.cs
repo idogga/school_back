@@ -1,6 +1,7 @@
 ﻿namespace School.BL.Place
 {
     using School.AbstractService;
+    using School.Database;
     using School.Dto;
 
     public class CabineteMapper : MapperService<CabineteDto, Cabinete>

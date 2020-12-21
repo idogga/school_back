@@ -2,8 +2,8 @@
 {
     using Microsoft.AspNetCore.Mvc;
 
-    using School.BL;
     using School.BL.Place;
+    using School.Database;
     using School.Dto;
 
     [Route("api/[controller]")]

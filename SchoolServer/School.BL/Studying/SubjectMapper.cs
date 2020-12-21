@@ -3,6 +3,7 @@
     using System;
 
     using School.AbstractService;
+    using School.Database;
     using School.Dto;
 
     public class SubjectMapper : MapperService<SubjectDto, Subject>

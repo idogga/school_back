@@ -1,4 +1,4 @@
-﻿namespace School.BL.Pupil
+﻿namespace School.Database
 {
     /// <summary>
     /// Класс.
@@ -6,13 +6,13 @@
     public class Class : BaseModel
     {
         /// <summary>
-        /// Литера.
-        /// </summary>
-        public char Litera { get; set; }
-
-        /// <summary>
         /// Уровень.
         /// </summary>
         public int Grade { get; set; }
+
+        /// <summary>
+        /// Литера.
+        /// </summary>
+        public char Litera { get; set; }
     }
 }
