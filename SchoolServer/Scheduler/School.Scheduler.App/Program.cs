@@ -1,26 +1,46 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace School.Scheduler.App
 {
+    using System;
+
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
+
+    using School.Scheduler.Database;
+
     public class Program
     {
-        public static void Main(string[] args)
+        public static IHostBuilder CreateHostBuilder(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            return Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+        public static void Main(string[] args)
+        {
+            var host = CreateHostBuilder(args).Build();
+            MigrateDatabase(host.Services);
+            host.Run();
+        }
+
+        /// <summary>
+        /// Миграция БД.
+        /// </summary>
+        /// <param name="serviceProvider">Провайдер сервисов.</param>
+        private static void MigrateDatabase(IServiceProvider serviceProvider)
+        {
+            using (var scope = serviceProvider.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetService<ScheduleContext>();
+                var migrations = dbContext.Database.GetPendingMigrations();
+
+                foreach (var migration in migrations)
                 {
-                    webBuilder.UseStartup<Startup>();
-                });
+                    Console.WriteLine($"[x] Применение миграции: {migration}");
+                }
+
+                dbContext.Database.Migrate();
+            }
+        }
     }
 }
