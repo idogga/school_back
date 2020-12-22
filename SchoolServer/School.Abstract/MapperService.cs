@@ -1,4 +1,4 @@
-﻿namespace School.AbstractService
+﻿namespace School.Abstract
 {
     public abstract class MapperService<TDto, TModel>
     {

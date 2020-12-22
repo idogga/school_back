@@ -3,7 +3,7 @@
     using System;
     using System.Threading.Tasks;
 
-    using School.AbstractService;
+    using School.Abstract;
     using School.Database;
 
     public class TeacherService : CrudService<Teacher>

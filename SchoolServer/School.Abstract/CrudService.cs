@@ -1,4 +1,4 @@
-﻿namespace School.AbstractService
+﻿namespace School.Abstract
 {
     using System.Threading.Tasks;
 

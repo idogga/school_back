@@ -2,7 +2,7 @@
 {
     using System;
 
-    using School.AbstractService;
+    using School.Abstract;
     using School.Database;
     using School.Dto;
 

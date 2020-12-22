@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\School.AbstractService\School.AbstractService.csproj" />
+    <ProjectReference Include="..\School.Abstract\School.Abstract.csproj" />
     <ProjectReference Include="..\School.BL\School.BL.csproj" />
     <ProjectReference Include="..\School.Dto\School.Dto.csproj" />
   </ItemGroup>

@@ -5,13 +5,17 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolServerMain", "SchoolServerMain\SchoolServerMain.csproj", "{5D9C9E82-11B7-4E5B-A791-F0EE40316E79}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "School.AbstractService", "School.AbstractService\School.AbstractService.csproj", "{1E4D9E2D-066A-495A-9392-E3928D48624F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "School.BL", "School.BL\School.BL.csproj", "{50F2462B-B861-4EA6-B908-39A486FAAC36}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "School.Dto", "School.Dto\School.Dto.csproj", "{D47E37F8-A572-4456-A00E-768C8C6F810B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School.Database", "School.Database\School.Database.csproj", "{A46A4DED-611B-4EA9-9823-F3BCF57F2117}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "School.Database", "School.Database\School.Database.csproj", "{A46A4DED-611B-4EA9-9823-F3BCF57F2117}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scheduler", "Scheduler", "{9AF637D1-331D-475E-B094-169DE094C3EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School.Scheduler.App", "Scheduler\School.Scheduler.App\School.Scheduler.App.csproj", "{71E9C877-0147-4DE4-9B81-D14163226040}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School.Abstract", "School.Abstract\School.Abstract.csproj", "{A39CF9F6-309C-4A28-AA92-381AC93DF81E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +27,6 @@ Global
 		{5D9C9E82-11B7-4E5B-A791-F0EE40316E79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D9C9E82-11B7-4E5B-A791-F0EE40316E79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D9C9E82-11B7-4E5B-A791-F0EE40316E79}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1E4D9E2D-066A-495A-9392-E3928D48624F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E4D9E2D-066A-495A-9392-E3928D48624F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E4D9E2D-066A-495A-9392-E3928D48624F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E4D9E2D-066A-495A-9392-E3928D48624F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{50F2462B-B861-4EA6-B908-39A486FAAC36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{50F2462B-B861-4EA6-B908-39A486FAAC36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50F2462B-B861-4EA6-B908-39A486FAAC36}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,9 +39,20 @@ Global
 		{A46A4DED-611B-4EA9-9823-F3BCF57F2117}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A46A4DED-611B-4EA9-9823-F3BCF57F2117}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A46A4DED-611B-4EA9-9823-F3BCF57F2117}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71E9C877-0147-4DE4-9B81-D14163226040}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71E9C877-0147-4DE4-9B81-D14163226040}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71E9C877-0147-4DE4-9B81-D14163226040}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71E9C877-0147-4DE4-9B81-D14163226040}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A39CF9F6-309C-4A28-AA92-381AC93DF81E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A39CF9F6-309C-4A28-AA92-381AC93DF81E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A39CF9F6-309C-4A28-AA92-381AC93DF81E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A39CF9F6-309C-4A28-AA92-381AC93DF81E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{71E9C877-0147-4DE4-9B81-D14163226040} = {9AF637D1-331D-475E-B094-169DE094C3EF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5D2E8882-0D37-4F06-9694-03425F8D8D0D}

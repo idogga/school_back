@@ -1,10 +1,8 @@
-﻿namespace SchoolServerMain
+﻿namespace School.Abstract
 {
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
-
-    using School.AbstractService;
 
     /// <summary>
     /// ffffff

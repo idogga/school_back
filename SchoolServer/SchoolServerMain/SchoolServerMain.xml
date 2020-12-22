@@ -1,50 +1,14 @@
 <?xml version="1.0"?>
-
 <doc>
-  <assembly>
-    <name>SchoolServerMain</name>
-  </assembly>
-  <members>
-    <member name="T:SchoolServerMain.CrudController`2">
-      <summary>
-        ffffff
-      </summary>
-      <typeparam name="TDto"></typeparam>
-      <typeparam name="TModel"></typeparam>
-    </member>
-    <member name="M:SchoolServerMain.CrudController`2.CreateAsync(`0)">
-      <summary>
-        Создать.
-      </summary>
-      <param name="dto"></param>
-      <returns></returns>
-    </member>
-    <member name="M:SchoolServerMain.CrudController`2.DeleteAsync(System.String)">
-      <summary>
-        Удалить.
-      </summary>
-      <param name="dto"></param>
-      <returns></returns>
-    </member>
-    <member name="M:SchoolServerMain.CrudController`2.ReadAsync(System.String)">
-      <summary>
-        Считать.
-      </summary>
-      <param name="dto"></param>
-      <returns></returns>
-    </member>
-    <member name="M:SchoolServerMain.CrudController`2.UpdateAsync(`0)">
-      <summary>
-        Обновить.
-      </summary>
-      <param name="dto"></param>
-      <returns></returns>
-    </member>
-    <member name="M:SchoolServerMain.Program.MigrateDatabase(System.IServiceProvider)">
-      <summary>
-        Миграция БД.
-      </summary>
-      <param name="serviceProvider">Провайдер сервисов.</param>
-    </member>
-  </members>
+    <assembly>
+        <name>SchoolServerMain</name>
+    </assembly>
+    <members>
+        <member name="M:SchoolServerMain.Program.MigrateDatabase(System.IServiceProvider)">
+            <summary>
+            Миграция БД.
+            </summary>
+            <param name="serviceProvider">Провайдер сервисов.</param>
+        </member>
+    </members>
 </doc>

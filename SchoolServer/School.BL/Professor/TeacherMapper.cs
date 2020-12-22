@@ -1,6 +1,6 @@
 ﻿namespace School.BL.Professor
 {
-    using School.AbstractService;
+    using School.Abstract;
     using School.Database;
     using School.Dto;
 

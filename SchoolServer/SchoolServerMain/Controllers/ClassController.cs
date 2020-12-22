@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
 
+    using School.Abstract;
     using School.BL.Pupil;
     using School.Database;
     using School.Dto;
