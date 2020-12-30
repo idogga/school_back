@@ -23,5 +23,9 @@
     <ProjectReference Include="..\School.Scheduler.Database\School.Scheduler.Database.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 
 </Project>
