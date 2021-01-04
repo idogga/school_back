@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SchoolServerMain</name>
+    </assembly>
+    <members>
+        <member name="M:SchoolServerMain.Program.MigrateDatabase(System.IServiceProvider)">
+            <summary>
+            ???????? ??.
+            </summary>
+            <param name="serviceProvider">????????? ????????.</param>
+        </member>
+    </members>
+</doc>
