@@ -6,73 +6,38 @@ namespace School.Scheduler.BL
 {
     using School.Scheduler.BL.Penalties;
     using School.Scheduler.Database;
+    using System.Linq;
 
     public class SwarmService
     {
-        private readonly ScheduleContext _context;
         private readonly PenaltyService _penaltyService;
 
-        private int _currentScore = 0;
+        private int _currentScore => _penaltyService.Penalties
+            .Select(x=>x.PenaltyType.CalculateScore())
+            .Aggregate((x,y)=> x+y);
 
-        public SwarmService(ScheduleContext context)
+        private bool _isFullPenalties => _currentScore > 127;
+
+        public SwarmService()
         {
-            _context = context;
+            _penaltyService = PenaltyServiceFactory.Generate();
         }
 
-        public void NextIteraction()
+        public
+
+        private void FindPrePenalties()
         {
-            ResetScore();
-            FindPenalties();
-            foreach (var e in Empl)
-            {
-                foreach (Penalty p in e.penalties)
-                {
-                    switch (p.name)
-                    {
-                        case "PenaltyAboveNormalHolidayCnt": //запланировано много дней
-                            …
-                            break;
-                        case "PenaltyNo14DaysPart"://одна из частей должна быть не менее 14 дней
-                            …
-                            break;
-                        case "PenaltyBellowNormalHolidayCnt": //запланировано мало дней
-                            …                        
-                            break;
-                        default:
-                            Log.WriteLine("Не задан алогритм для штрафа " + p.name);
-                            break;
-                    }
-                }
-            }
+            _penaltyService.PreCalculate();
         }
 
-        private void FindPenalties()
+        private void FindPostPenalties()
         {
-
+            _penaltyService.PostCalculate();
         }
 
         private void ResetScore()
         {
-
-        }
-
-        private int CalculateScore(bool reCalculate = false)
-        {
-            if (_currentScore < 127)
-                return _currentScore;
-
-            if (reCalculate)
-                ResetScore();
-            _currentScore = _penaltyService.CalculateScore();
-            return _currentScore;
-        }
-
-        public bool IsCovarged()
-        {
-            if (_currentScore < 127)
-                return false;
-            FindPenalties();
-            return _penaltyService.TotalPenalties() != 0;
+            _penaltyService.Reset();
         }
     }
 }

@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School.Scheduler.Dto", "Sch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School.Scheduler.Test", "Scheduler\School.Scheduler.Test\School.Scheduler.Test.csproj", "{FD6400A3-29A6-4377-9587-356219E4D6F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School.Scheduler.App.Console", "Scheduler\School.Scheduler.App.Console\School.Scheduler.App.Console.csproj", "{394A8D78-C866-41B3-A906-D09AEF037CC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{FD6400A3-29A6-4377-9587-356219E4D6F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD6400A3-29A6-4377-9587-356219E4D6F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD6400A3-29A6-4377-9587-356219E4D6F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{394A8D78-C866-41B3-A906-D09AEF037CC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{394A8D78-C866-41B3-A906-D09AEF037CC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{394A8D78-C866-41B3-A906-D09AEF037CC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{394A8D78-C866-41B3-A906-D09AEF037CC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +87,7 @@ Global
 		{1D908F4F-ED7E-4257-9128-A12864172F0C} = {9AF637D1-331D-475E-B094-169DE094C3EF}
 		{CAE1634F-61E3-4889-BF16-BC4FB9A6E7CE} = {9AF637D1-331D-475E-B094-169DE094C3EF}
 		{FD6400A3-29A6-4377-9587-356219E4D6F7} = {9AF637D1-331D-475E-B094-169DE094C3EF}
+		{394A8D78-C866-41B3-A906-D09AEF037CC4} = {9AF637D1-331D-475E-B094-169DE094C3EF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5D2E8882-0D37-4F06-9694-03425F8D8D0D}

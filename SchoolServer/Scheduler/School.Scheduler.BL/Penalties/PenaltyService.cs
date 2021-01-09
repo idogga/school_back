@@ -1,26 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace School.Scheduler.BL.Penalties
 {
     using School.Scheduler.Database;
 
-    public class PenaltyService
+    public class PenaltyService: IPenaltyService
     {
-        private readonly PenaltyLessonServices _lessonServices;
-        private readonly PenaltyUserService _userServices;
+        private readonly List<IPenaltyService> _penaltyServices = new List<IPenaltyService>();
 
-        private List<Penalty> _penalties = new List<Penalty>();
-
-        public int CalculateScore()
+        public PenaltyService(PenaltyLessonServices lessonServices,
+            PenaltyUserService userService)
         {
-            return 0;
+            _penaltyServices.Add(userService);
+            _penaltyServices.Add(lessonServices);
         }
 
-        public int TotalPenalties()
+        public List<Penalty> Penalties => _penaltyServices.SelectMany(x => x.Penalties).ToList();
+
+        public void PostCalculate()
         {
-            return _penalties.Count;
+            _penaltyServices.ForEach(x => x.PostCalculate());
+        }
+
+        public void PreCalculate()
+        {
+            _penaltyServices.ForEach(x => x.PreCalculate());
+        }
+
+        public void Reset()
+        {
+            _penaltyServices.ForEach(x => x.Penalties.Clear());
         }
     }
 }

@@ -4,4 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\School.Scheduler.Database\School.Scheduler.Database.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Generator\" />
+  </ItemGroup>
 </Project>

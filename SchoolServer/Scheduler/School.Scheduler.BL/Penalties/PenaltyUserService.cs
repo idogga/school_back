@@ -6,35 +6,35 @@
 
     using School.Scheduler.Database;
 
-    public class PenaltyUserService
+    public class PenaltyUserService: IPenaltyService
     {
         private readonly List<TimeLesson> _lessons;
 
         public PenaltyUserService(List<TimeLesson> lessons)
         {
             _lessons = lessons;
+            Penalties = new List<Penalty>();
         }
 
-        public List<Penalty> CalculatePenalty(string userId)
+        public List<Penalty> Penalties { get; }
+
+        public void PostCalculate()
         {
-            var result = new List<Penalty>();
-            var lessonsCount = _lessons.Count(x => x.TeacherId == userId);
-            
-            if (lessonsCount == 0)
-                result.Add(Penalty.Generate(string.Empty, PenaltyType.NotLessons));
+            var teacherLessons = _lessons.GroupBy(x => x.TeacherId)
+                .Select(gr => new { TeacherId = gr.Key, Count = gr.Count() })
+                .OrderByDescending(l => l.Count);
+            if (teacherLessons.Min(x=>x.Count) == 0)
+                    Penalties.Add(Penalty.Generate(string.Empty, PenaltyType.NotLessons));
 
             // TODO: Добавить план для каждого учителя
-            if (lessonsCount > 25)
-                result.Add(Penalty.Generate($"Текущее колличество: {lessonsCount}", PenaltyType.TooMuchLessonsOnWeek));
+            var maxLessons = teacherLessons.Max(x => x.Count);
+            if (maxLessons > 25)
+                Penalties.Add(Penalty.Generate($"Текущее колличество: {maxLessons}", PenaltyType.TooMuchLessonsOnWeek));
 
-            return result;
         }
 
-        //private Tuple<int, DateTime> GetMaxLessonsOnDay(string userId)
-        //{
-        //    _lessons.Where(x=>x.TeacherId == userId)
-        //            .GroupBy(x=> x.Time.Start.DayOfYear)
-                    
-        //}
+        public void PreCalculate()
+        {
+        }
     }
 }
