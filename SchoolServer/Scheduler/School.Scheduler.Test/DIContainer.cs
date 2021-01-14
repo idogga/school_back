@@ -23,37 +23,14 @@
 
             services.AddDbContext<ScheduleContext>(
                 options =>
-                    options.UseInMemoryDatabase(dbName, GetOrCreateRoot(dbName))
-                           .ConfigureWarnings(x => Debug.WriteLine($"Ошибка БД: {x}")));
+                    options.UseInMemoryDatabase(dbName, GetOrCreateRoot(dbName)).
+                            ConfigureWarnings(x => Debug.WriteLine($"Ошибка БД: {x}")));
 
             ServiceProvider = services.BuildServiceProvider();
             MigrateDatabase(ServiceProvider);
         }
 
         public static IServiceProvider ServiceProvider { get; }
-
-        /// <summary>
-        /// Миграция БД.
-        /// </summary>
-        /// <param name="serviceProvider">Провайдер сервисов.</param>
-        private static void MigrateDatabase(IServiceProvider serviceProvider)
-        {
-            using (var scope = serviceProvider.CreateScope())
-            {
-                var dbContext = scope.ServiceProvider.GetService<ScheduleContext>();
-                if (dbContext.Database.ProviderName == "Microsoft.EntityFrameworkCore.InMemory")
-                    return;
-                    
-                var migrations = dbContext.Database.GetPendingMigrations();
-                foreach (var migration in migrations)
-                {
-                    Console.WriteLine($"[x] Применение миграции: {migration}");
-                }
-
-                dbContext.Database.Migrate();
-            }
-        }
-
 
         /// <summary>
         ///     Создание или взятие из кэша корня инмемори БД.
@@ -66,6 +43,28 @@
                 DbRootsCache.TryAdd(dbName, new InMemoryDatabaseRoot());
 
             return DbRootsCache[dbName];
+        }
+
+        /// <summary>
+        /// Миграция БД.
+        /// </summary>
+        /// <param name="serviceProvider">Провайдер сервисов.</param>
+        private static void MigrateDatabase(IServiceProvider serviceProvider)
+        {
+            using (var scope = serviceProvider.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetService<ScheduleContext>();
+                if (dbContext.Database.ProviderName == "Microsoft.EntityFrameworkCore.InMemory")
+                    return;
+
+                var migrations = dbContext.Database.GetPendingMigrations();
+                foreach (var migration in migrations)
+                {
+                    Console.WriteLine($"[x] Применение миграции: {migration}");
+                }
+
+                dbContext.Database.Migrate();
+            }
         }
     }
 }
