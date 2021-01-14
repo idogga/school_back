@@ -23,8 +23,6 @@ namespace School.Scheduler.BL
             _penaltyService = PenaltyServiceFactory.Generate();
         }
 
-        public
-
         private void FindPrePenalties()
         {
             _penaltyService.PreCalculate();
