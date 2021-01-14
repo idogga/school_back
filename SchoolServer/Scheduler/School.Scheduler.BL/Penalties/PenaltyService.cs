@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-
-namespace School.Scheduler.BL.Penalties
+﻿namespace School.Scheduler.BL.Penalties
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     using School.Scheduler.Database;
 
-    public class PenaltyService: IPenaltyService
+    public class PenaltyService : IPenaltyService
     {
         private readonly List<IPenaltyService> _penaltyServices = new List<IPenaltyService>();
 

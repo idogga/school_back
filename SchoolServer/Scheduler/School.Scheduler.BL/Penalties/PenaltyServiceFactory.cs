@@ -1,5 +1,4 @@
-﻿using System;
-namespace School.Scheduler.BL.Penalties
+﻿namespace School.Scheduler.BL.Penalties
 {
     using System.Collections.Generic;
 

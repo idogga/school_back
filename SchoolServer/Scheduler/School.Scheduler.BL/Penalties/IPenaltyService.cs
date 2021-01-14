@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using School.Scheduler.Database;
-
-namespace School.Scheduler.BL.Penalties
+﻿namespace School.Scheduler.BL.Penalties
 {
+    using System.Collections.Generic;
+
+    using School.Scheduler.Database;
+
     public interface IPenaltyService
     {
-        void PreCalculate();
+        List<Penalty> Penalties { get; }
 
         void PostCalculate();
 
-        List<Penalty> Penalties { get; }
+        void PreCalculate();
     }
 }

@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace School.Scheduler.App.Console
+﻿namespace School.Scheduler.App.Console
 {
-    using Console = System.Console;
+    using System;
 
     public class Logger
     {

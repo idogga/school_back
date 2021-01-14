@@ -1,19 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace School.Dto.Plans
+﻿namespace School.Dto.Plans
 {
-    public class SubjectPlanDto: BaseDto
-    {
-        public int TotalCountPerPeriod { get; set; }
+    using System;
+    using System.Collections.Generic;
 
-        public DateTime StartPeriod { get; set; }
+    public class SubjectPlanDto : BaseDto
+    {
+        public List<AdditionalSubjectPlanDto> Addtionals { get; set; } = new List<AdditionalSubjectPlanDto>();
 
         public DateTime EndPeriod { get; set; }
 
+        public DateTime StartPeriod { get; set; }
+
         public string SubjectId { get; set; }
 
-        public List<AdditionalSubjectPlanDto> Addtionals { get; set; } = new List<AdditionalSubjectPlanDto>();
+        public int TotalCountPerPeriod { get; set; }
     }
 }

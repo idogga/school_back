@@ -1,12 +1,14 @@
-﻿using System;
-
-namespace School.Scheduler.Database
+﻿namespace School.Scheduler.Database
 {
+    using System;
+
     public enum PenaltyType
     {
         NotLessons,
+
         TooMuchLessonsOnWeek,
-        TooMuchLessonsOnDay,
+
+        TooMuchLessonsOnDay
     }
 
     public static class PenaltyTypeExtension
@@ -21,11 +23,10 @@ namespace School.Scheduler.Database
                 case PenaltyType.TooMuchLessonsOnWeek:
                 case PenaltyType.TooMuchLessonsOnDay:
                     return 20;
-                
+
                 default:
                     throw new ArgumentOutOfRangeException("Не удалось определить тип ошибки");
             }
         }
-
     }
 }

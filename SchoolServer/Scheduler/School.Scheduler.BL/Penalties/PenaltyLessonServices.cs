@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace School.Scheduler.BL.Penalties
+﻿namespace School.Scheduler.BL.Penalties
 {
+    using System.Collections.Generic;
+
     using School.Scheduler.Database;
 
-    public class PenaltyLessonServices: IPenaltyService
+    public class PenaltyLessonServices : IPenaltyService
     {
         private readonly List<TimeLesson> _lessons;
 
@@ -16,7 +14,7 @@ namespace School.Scheduler.BL.Penalties
             Penalties = new List<Penalty>();
         }
 
-        public List<Penalty> Penalties { get; } 
+        public List<Penalty> Penalties { get; }
 
         public void PostCalculate()
         {
