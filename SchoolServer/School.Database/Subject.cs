@@ -5,6 +5,9 @@
     /// </summary>
     public class Subject : BaseModel
     {
+        /// <summary>
+        /// Максимальное колличество занятий в неделю.
+        /// </summary>
         public int MaxPerWeek { get; set; }
 
         /// <summary>

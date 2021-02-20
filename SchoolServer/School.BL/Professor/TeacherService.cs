@@ -8,11 +8,9 @@
 
     public class TeacherService : CrudService<Teacher>
     {
-        private readonly SchoolContext _context;
-
         public TeacherService(SchoolContext context)
+            : base(context)
         {
-            _context = context;
         }
 
         public override async Task<string> CreateAsync(Teacher model)
@@ -23,8 +21,8 @@
             if (string.IsNullOrEmpty(model.Name))
                 throw new Exception("oh name");
 
-            await _context.Teachers.AddAsync(model);
-            await _context.SaveChangesAsync();
+            await Context.Teachers.AddAsync(model);
+            await Context.SaveChangesAsync();
             return model.Id;
         }
 

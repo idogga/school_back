@@ -8,6 +8,11 @@
 
     public class ClassService : CrudService<Class>
     {
+        public ClassService(SchoolContext context)
+            : base(context)
+        {
+        }
+
         public override Task<string> CreateAsync(Class model)
         {
             throw new NotImplementedException();

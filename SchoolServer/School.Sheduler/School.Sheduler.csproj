@@ -5,9 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Plans\**" />
-    <EmbeddedResource Remove="Plans\**" />
-    <None Remove="Plans\**" />
+    <Folder Include="Context\Plans\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +19,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\School.Database\School.Database.csproj" />
   </ItemGroup>
 
 </Project>
