@@ -51,5 +51,30 @@
         {
             throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// Добавить план пердмета для класса.
+        /// </summary>
+        /// <param name="planId">Идентификатор плана класса.</param>
+        /// <param name="subjectPlanId">Идентификатор плана предмета.</param>
+        /// <returns></returns>
+        public async Task AddSubjectToPlanAsync(string planId, string subjectPlanId)
+        {
+            var planClass = await Context.PlanClasses
+                                         .Include(x => x.SubjectPlans)
+                                         .SingleOrDefaultAsync(x => x.Id == planId);
+            if (planClass == default)
+                throw new ApplicationException("Не удалось найти план для класса.");
+
+
+            var subjectPlan = await Context.SubjectPlans
+                                           .Include(x => x.Subject)
+                                           .SingleOrDefaultAsync(x => x.Id == planId);
+            if (subjectPlan == default)
+                throw new ApplicationException("Не удалось найти план для предмета.");
+
+            planClass.SubjectPlans.Add(subjectPlan);
+            await Context.SaveChangesAsync();
+        }
     }
 }

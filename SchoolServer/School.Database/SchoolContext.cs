@@ -34,6 +34,11 @@
         public DbSet<PlanClass> PlanClasses { get; set; }
 
         /// <summary>
+        /// Планы для предметов.
+        /// </summary>
+        public DbSet<SubjectPlan> SubjectPlans{ get; set; }
+
+        /// <summary>
         /// Предметы.
         /// </summary>
         public DbSet<Subject> Subjects { get; set; }
