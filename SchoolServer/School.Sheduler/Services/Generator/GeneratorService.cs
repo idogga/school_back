@@ -13,9 +13,9 @@
     using School.Sheduler.Context.Rules;
     using School.Sheduler.Context.Schedule;
 
-    internal class GeneratorService
+    public class GeneratorService
     {
-        private readonly ConcurrentQueue<A> _queue;
+        private readonly ConcurrentQueue<ResultCell> _queue;
 
         private readonly SchedulerContext _schedulerContext;
 
@@ -30,6 +30,7 @@
         private IReadOnlyList<ScheduleLesson> _scheduleLessons;
 
         private IReadOnlyList<Subject> _subjects;
+        private IReadOnlyList<PlanClass> _plans;
 
         private IReadOnlyList<Teacher> _teachers;
 
@@ -38,16 +39,21 @@
         {
             _schedulerContext = schedulerContext;
             _schoolContext = schoolContext;
-            _queue = new ConcurrentQueue<A>();
+            _queue = new ConcurrentQueue<ResultCell>();
         }
 
+        /// <summary>
+        /// Начать обработку.
+        /// </summary>
+        /// <returns></returns>
         public async Task Start()
         {
-            var a = await GetMaxLessonsCountAsync();
-            _teachers = await _schoolContext.Teachers.AsNoTracking().ToListAsync();
+            var maxLessonsCount = await GetMaxLessonsCountAsync();
+            _teachers = await _schoolContext.Teachers.AsNoTracking().Include(x=>x.Subjects).Include(x=>x.Subjects).ToListAsync();
             _classes = await _schoolContext.Classes.AsNoTracking().ToListAsync();
             _subjects = await _schoolContext.Subjects.AsNoTracking().ToListAsync();
             _cabinetes = await _schoolContext.Cabinetes.AsNoTracking().ToListAsync();
+            _plans = await _schoolContext.PlanClasses.AsNoTracking().Include(x=>x.Class).Include(x=>x.SubjectPlans).ThenInclude(x=>x.Subject).ToListAsync();
             _scheduleLessons = await _schedulerContext.ScheduleLessons.AsNoTracking().ToListAsync();
             var rules = new List<BaseRule>();
             var classRules = await _schedulerContext.ClassRules.AsNoTracking().ToListAsync();
@@ -58,7 +64,8 @@
             rules.AddRange(teacherRules);
             _rules = new List<BaseRule>();
 
-            Parallel.For(0, a, StartLoading);
+            //Parallel.For(0, maxLessonsCount, StartLoading);
+            StartLoading(0, null);
         }
 
         private Task<int> GetMaxLessonsCountAsync()
@@ -72,7 +79,7 @@
             swarmService.Generate();
 
             if (swarmService.Success)
-                _queue.Enqueue(new A(swarmService.Score, swarmService.Result));
+                _queue.Enqueue(new ResultCell(swarmService.Score, swarmService.Result));
 
             if (swarmService.CanGenerate)
                 Load(swarmService, ++seed);
@@ -80,20 +87,32 @@
 
         private void StartLoading(int startHour, ParallelLoopState state)
         {
-            var swarmService = new SwarmService(_teachers, _classes, _subjects, _cabinetes, _rules, _scheduleLessons);
+            var swarmService = new SwarmService(_teachers, _classes, _subjects, _cabinetes, _rules, _scheduleLessons, _plans);
             Load(swarmService, 0);
         }
 
-        private class A
+        /// <summary>
+        /// Ячейка с предварительным результатом.
+        /// </summary>
+        private struct ResultCell
         {
-            public A(long score, List<FactLesson> lessons)
+            /// <summary>
+            /// Конструктор.
+            /// </summary>
+            public ResultCell(long score, List<FactLesson> lessons)
             {
                 Score = score;
                 Lessons = lessons;
             }
 
+            /// <summary>
+            /// Список уроков.
+            /// </summary>
             public List<FactLesson> Lessons { get; }
 
+            /// <summary>
+            /// Текущий счет.
+            /// </summary>
             public long Score { get; }
         }
     }

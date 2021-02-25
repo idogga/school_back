@@ -15,7 +15,7 @@ namespace School.Scheduler.Test
     using School.Database;
     using School.Sheduler.Context;
 
-    class BaseTest
+    public class BaseTest
     {
         private static readonly IDictionary<string, InMemoryDatabaseRoot> DbRootsCache =
             new ConcurrentDictionary<string, InMemoryDatabaseRoot>();

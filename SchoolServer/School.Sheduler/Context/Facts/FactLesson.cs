@@ -13,5 +13,15 @@
         public string SubjectId { get; set; }
 
         public string TeacherId { get; set; }
+
+        /// <summary>
+        /// Кабинет.
+        /// </summary>
+        public string Cabinete { get; set; }
+
+        public override string ToString()
+        {
+            return $"В {Lesson} {SubjectId}";
+        }
     }
 }

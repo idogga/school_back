@@ -20,6 +20,9 @@
 
         public DbSet<FactLesson> Lessons { get; set; }
 
+        /// <summary>
+        /// Сетка расписания.
+        /// </summary>
         public DbSet<ScheduleLesson> ScheduleLessons { get; set; }
 
         public DbSet<SubjectRule> SubjectRules { get; set; }
