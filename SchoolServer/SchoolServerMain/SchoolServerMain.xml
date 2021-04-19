@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SchoolServerMain</name>
+    </assembly>
+    <members>
+        <member name="T:SchoolServerMain.Middleware.HttpStatusCodeExceptionMiddleware">
+            <summary>
+                Мидлвара для обработки ошибок при выполнении запроса.
+            </summary>
+        </member>
+        <member name="F:SchoolServerMain.Middleware.HttpStatusCodeExceptionMiddleware._logger">
+            <summary>
+            Делегат запроса.
+            </summary>
+        </member>
+        <member name="F:SchoolServerMain.Middleware.HttpStatusCodeExceptionMiddleware._next">
+            <summary>
+            Логгер.
+            </summary>
+        </member>
+        <member name="M:SchoolServerMain.Middleware.HttpStatusCodeExceptionMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILogger{SchoolServerMain.Middleware.HttpStatusCodeExceptionMiddleware})">
+            <summary>
+                Конструктор.
+            </summary>
+        </member>
+        <member name="M:SchoolServerMain.Middleware.HttpStatusCodeExceptionMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+                Метод выполнения мидлвары.
+            </summary>
+            <param name="httpContext"> Контекст запроса. </param>
+            <returns> Таск. </returns>
+        </member>
+        <member name="M:SchoolServerMain.Middleware.HttpStatusCodeExceptionMiddleware.WriteResponse(Microsoft.AspNetCore.Http.HttpContext,System.String,System.Net.HttpStatusCode,System.String)">
+            <summary>
+                Записывает ответ указанного контекста.
+            </summary>
+            <param name="context">Контекст запроса.</param>
+            <param name="statusCode">Код ответа.</param>
+            <param name="contentType"> Тип содержимого. </param>
+            <param name="message">Сообщение ответа.</param>
+        </member>
+        <member name="M:SchoolServerMain.Middleware.MiddlewareExtensions.UseHttpStatusCodeExceptionMiddleware(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+                Регистрация мидлвары для обработки ошибок при выполнении запроса.
+            </summary>
+            <param name="builder"> Билдер приложения. </param>
+        </member>
+        <member name="M:SchoolServerMain.Program.MigrateDatabase``1(System.IServiceProvider)">
+            <summary>
+            Миграция БД.
+            </summary>
+            <param name="serviceProvider">Провайдер сервисов.</param>
+        </member>
+    </members>
+</doc>
