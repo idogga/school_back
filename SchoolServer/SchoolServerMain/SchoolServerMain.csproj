@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2021.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.3">
       <PrivateAssets>all</PrivateAssets>
@@ -25,10 +26,7 @@
     <ProjectReference Include="..\School.Abstract\School.Abstract.csproj" />
     <ProjectReference Include="..\School.BL\School.BL.csproj" />
     <ProjectReference Include="..\School.Dto\School.Dto.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\Scheduler\" />
+    <ProjectReference Include="..\School.Sheduler\School.Sheduler.csproj" />
   </ItemGroup>
 
 

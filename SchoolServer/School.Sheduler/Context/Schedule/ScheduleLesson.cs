@@ -27,9 +27,10 @@
         /// </summary>
         public TimeSpan StartTime { get; set; }
         
+        /// <inheritdoc/>
         public override string ToString()
         {
-            return $"{Day} {StartTime:HH:mm:ss}-{EndTime:HH:mm:ss}";
+            return $"{Day} {StartTime}-{EndTime}";
         }
     }
 }

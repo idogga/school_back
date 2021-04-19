@@ -1,12 +1,19 @@
 ﻿namespace School.Scheduler.Test.GenerateTests
 {
     using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Linq;
     using System.Threading.Tasks;
+
+    using FluentAssertions;
+
+    using Microsoft.EntityFrameworkCore;
 
     using NUnit.Framework;
 
     using School.Database;
+    using School.Sheduler.Context.Facts;
     using School.Sheduler.Context.Schedule;
     using School.Sheduler.Services.Generator;
 
@@ -271,10 +278,41 @@
         public async Task ClassTest()
         {
             // Prepare
-            await _generatorService.Start();
+            var totalCount = await SchoolContext.PlanClasses.SelectMany(x => x.SubjectPlans).SumAsync(x => x.Count);
+            var subjectPlans = await SchoolContext.PlanClasses.Include(x => x.SubjectPlans).ToListAsync();
+            Show(subjectPlans);
             // Act
+            await _generatorService.Start();
 
             // Assert
+            var results = await ScheduleContext.Lessons.ToListAsync();
+            Show(results);
+            //subjectPlans.GroupBy(x => x.Subject).ToList().ForEach(
+            //    x =>
+            //    {
+            //        var subjects = results.Where(res => res.SubjectId == x.Key.Id).ToList();
+            //        subjects.Count().Should().Be(x.Sum(y=>y.Count), $"у {x.Key.Name} не совпадает");
+            //    });
+
+            results.Count.Should().Be(totalCount);
+        }
+
+        private void Show(List<FactLesson> lessons)
+        {
+            foreach (var lesson in lessons)
+            {
+                Debug.WriteLine($"{lesson.SubjectId} | {lesson.ClassId} | {lesson.Cabinete} | {lesson.TeacherId} | {lesson.Lesson}");
+            }
+        }
+        private void Show(List<PlanClass> plans)
+        {
+            foreach (var plan in plans)
+            {
+                foreach (var subject in plan.SubjectPlans)
+                {
+                    Debug.WriteLine($"{plan.Class.Id} | {subject.Subject.Id} | {subject.Count}");
+                }
+            }
         }
     }
 }

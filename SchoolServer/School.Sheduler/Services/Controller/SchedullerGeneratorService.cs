@@ -2,16 +2,18 @@
 
 namespace School.Sheduler.Services.Controller
 {
+    using HarabaSourceGenerators.Common.Attributes;
     using School.Sheduler.Services.Generator;
 
-    public class SchedullerGeneratorService
+    public interface ISchedulerGeneratorService
     {
-        private readonly GeneratorService _generatorService;
+        Task LoadAndSaveAsync();
+    }
 
-        public SchedullerGeneratorService(GeneratorService generatorService)
-        {
-            _generatorService = generatorService;
-        }
+    public partial class SchedullerGeneratorService : ISchedulerGeneratorService
+    {
+        [Inject]
+        private readonly GeneratorService _generatorService;
 
         public async Task LoadAndSaveAsync()
         {

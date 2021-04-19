@@ -12,6 +12,9 @@ namespace SchoolServerMain
 
     using School.BL;
     using School.Database;
+    using School.Sheduler;
+    using School.Sheduler.Context;
+    using SchoolServerMain.Middleware;
 
     public class Startup
     {
@@ -34,6 +37,7 @@ namespace SchoolServerMain
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseHttpStatusCodeExceptionMiddleware();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
@@ -53,11 +57,18 @@ namespace SchoolServerMain
                             Title = "School", Version = "v1"
                         }));
 
-            var sqlConnectionString = Configuration.GetConnectionString("BaseSchoolPostgreSqlProvider");
+            var schoolConnection = Configuration.GetConnectionString("BaseSchoolPostgreSqlProvider");
+            var schedulerConnection = Configuration.GetConnectionString("SchedulerPostgreSqlProvider");
 
             services.AddDbContext<SchoolContext>(
                 options =>
-                    options.UseNpgsql(sqlConnectionString).ConfigureWarnings(x => Debug.WriteLine($"Ошибка БД: {x}")));
+                    options.UseNpgsql(schoolConnection).ConfigureWarnings(x => Debug.WriteLine($"Ошибка БД: {x}")));
+
+            services.AddDbContext<SchedulerContext>(
+                options =>
+                    options.UseNpgsql(schedulerConnection).ConfigureWarnings(x => Debug.WriteLine($"Ошибка БД: {x}")));
+
+            services.AddSchedulerServices();
         }
     }
 }

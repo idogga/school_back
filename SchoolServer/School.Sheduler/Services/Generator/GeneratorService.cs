@@ -1,5 +1,6 @@
 ﻿namespace School.Sheduler.Services.Generator
 {
+    using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
@@ -13,10 +14,19 @@
     using School.Sheduler.Context.Rules;
     using School.Sheduler.Context.Schedule;
 
+    /// <summary>
+    /// Сервис для генерации плана.
+    /// </summary>
     public class GeneratorService
     {
+        /// <summary>
+        /// Список результатов.
+        /// </summary>
         private readonly ConcurrentQueue<ResultCell> _queue;
 
+        /// <summary>
+        /// 
+        /// </summary>
         private readonly SchedulerContext _schedulerContext;
 
         private readonly SchoolContext _schoolContext;
@@ -29,7 +39,6 @@
 
         private IReadOnlyList<ScheduleLesson> _scheduleLessons;
 
-        private IReadOnlyList<Subject> _subjects;
         private IReadOnlyList<PlanClass> _plans;
 
         private IReadOnlyList<Teacher> _teachers;
@@ -51,10 +60,9 @@
             var maxLessonsCount = await GetMaxLessonsCountAsync();
             _teachers = await _schoolContext.Teachers.AsNoTracking().Include(x=>x.Subjects).Include(x=>x.Subjects).ToListAsync();
             _classes = await _schoolContext.Classes.AsNoTracking().ToListAsync();
-            _subjects = await _schoolContext.Subjects.AsNoTracking().ToListAsync();
             _cabinetes = await _schoolContext.Cabinetes.AsNoTracking().ToListAsync();
             _plans = await _schoolContext.PlanClasses.AsNoTracking().Include(x=>x.Class).Include(x=>x.SubjectPlans).ThenInclude(x=>x.Subject).ToListAsync();
-            _scheduleLessons = await _schedulerContext.ScheduleLessons.AsNoTracking().ToListAsync();
+            _scheduleLessons = await _schedulerContext.ScheduleLessons.ToListAsync();
             var rules = new List<BaseRule>();
             var classRules = await _schedulerContext.ClassRules.AsNoTracking().ToListAsync();
             var subjectRules = await _schedulerContext.SubjectRules.AsNoTracking().ToListAsync();
@@ -66,6 +74,18 @@
 
             //Parallel.For(0, maxLessonsCount, StartLoading);
             StartLoading(0, null);
+            await SaveBestResult();
+        }
+
+        private async Task SaveBestResult()
+        {
+           // var results = _queue.ToArray();
+            var bestResult = _queue.OrderBy(x => x.Score).Select(x=>x.Lessons).FirstOrDefault();
+            if (bestResult == default)
+                throw new ApplicationException("Не удалось составить расписание");
+
+            await _schedulerContext.AddRangeAsync(bestResult);
+            await _schedulerContext.SaveChangesAsync();
         }
 
         private Task<int> GetMaxLessonsCountAsync()
@@ -75,7 +95,6 @@
 
         private void Load(SwarmService swarmService, int seed)
         {
-            swarmService.SetSeed(seed);
             swarmService.Generate();
 
             if (swarmService.Success)
@@ -87,7 +106,7 @@
 
         private void StartLoading(int startHour, ParallelLoopState state)
         {
-            var swarmService = new SwarmService(_teachers, _classes, _subjects, _cabinetes, _rules, _scheduleLessons, _plans);
+            var swarmService = new SwarmService(_teachers, _classes, _cabinetes, _rules, _scheduleLessons, _plans);
             Load(swarmService, 0);
         }
 

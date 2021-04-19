@@ -6,6 +6,9 @@
     using School.Sheduler.Context.Rules;
     using School.Sheduler.Context.Schedule;
 
+    /// <summary>
+    /// Контекст БД для работы с расписанием.
+    /// </summary>
     public class SchedulerContext : DbContext
     {
         /// <summary>
@@ -16,8 +19,14 @@
         {
         }
 
+        /// <summary>
+        /// Правила для работы с классом.
+        /// </summary>
         public DbSet<ClassRule> ClassRules { get; set; }
 
+        /// <summary>
+        /// Уроки.
+        /// </summary>
         public DbSet<FactLesson> Lessons { get; set; }
 
         /// <summary>
@@ -25,8 +34,19 @@
         /// </summary>
         public DbSet<ScheduleLesson> ScheduleLessons { get; set; }
 
+        /// <summary>
+        /// Правила для работы с предметом..
+        /// </summary>
         public DbSet<SubjectRule> SubjectRules { get; set; }
 
+        /// <summary>
+        /// Правила для работы с учителем.
+        /// </summary>
         public DbSet<TeacherRule> TeacherRules { get; set; }
+
+        /// <summary>
+        /// Логирование действий.
+        /// </summary>
+        public DbSet<LogRecord> Logs { get; set; }
     }
 }
