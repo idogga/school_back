@@ -116,7 +116,7 @@
         /// </summary>
         /// <param name="subjectPlans">Список планов.</param>
         /// <param name="classId">Идентификатор класса.</param>
-        private void Plan(ICollection<SubjectPlan> subjectPlans, string classId)
+        private void Plan(ICollection<SubjectPlan> subjectPlans, Guid classId)
         {
             foreach (var subjectPlan in subjectPlans)
             {
@@ -130,7 +130,7 @@
         /// </summary>
         /// <param name="subject">Предмет.</param>
         /// <param name="classId">Идентификатор класса.</param>
-        private void Subject(Subject subject, string classId)
+        private void Subject(Subject subject, Guid classId)
         {
             var teachers = _teachers.Where(x => x.Subjects.Any(x => x.Id == subject.Id)).ToList();
             Teacher(teachers, classId, subject.Id);
@@ -142,7 +142,7 @@
         /// <param name="teachers">Список учителей.</param>
         /// <param name="classId">Идентификатор класса.</param>
         /// <param name="subjectId">Идентификатор предмета.</param>
-        private void Teacher(IReadOnlyList<Teacher> teachers, string classId, string subjectId)
+        private void Teacher(IReadOnlyList<Teacher> teachers, Guid classId, Guid subjectId)
         {
             foreach (var teacher in teachers)
             {
@@ -156,7 +156,7 @@
         /// <param name="classId">Идентификатор класса.</param>
         /// <param name="teacherId">Идентификатор учителя.</param>
         /// <param name="subjectId">Идентификатор предмета.</param>
-        private void Cabinente(string classId, string teacherId, string subjectId)
+        private void Cabinente(Guid classId, Guid teacherId, Guid subjectId)
         {
             foreach (var cabinete in _cabinetes)
             {
@@ -171,7 +171,7 @@
         /// <param name="teacherId">Идентификатор учителя.</param>
         /// <param name="subjectId">Идентификатор предмета.</param>
         /// <param name="cabinenteId">Идентификатор кабинета.</param>
-        private void Lesson(string classId, string teacherId, string subjectId, string cabinenteId)
+        private void Lesson(Guid classId, Guid teacherId, Guid subjectId, Guid cabinenteId)
         {
             var scheduleLessons = _scheduleLessons.OrderBy(x => x.Day).ThenBy(x => x.StartTime).ToList();
             foreach (var lesson in scheduleLessons)
@@ -201,7 +201,7 @@
         /// <param name="classId">Идентификатор класса.</param>
         /// <param name="subjectId">Идентификатор предмета.</param>
         /// <returns>Флаг продолжения.</returns>
-        private bool CanStop(string classId, string subjectId)
+        private bool CanStop(Guid classId, Guid subjectId)
         {
             var contains = Result.Count(x => x.SubjectId == subjectId && x.ClassId == classId);
             var expected = _planClasses.Where(x => x.Class.Id == classId).SelectMany(x => x.SubjectPlans).
@@ -221,10 +221,10 @@
         /// <param name="cabineteId">Идентификатор кабинета.</param>
         /// <param name="lesson">Сетка урока.</param>
         /// <returns>Фактическое занятие.</returns>
-        private FactLesson GenerateLesson(string classId, 
-            string teacherId, 
-            string subjectId,
-            string cabineteId,
+        private FactLesson GenerateLesson(Guid classId, 
+            Guid teacherId, 
+            Guid subjectId,
+            Guid cabineteId,
             ScheduleLesson lesson)
         {
             return new FactLesson

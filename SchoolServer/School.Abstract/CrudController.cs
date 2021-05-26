@@ -1,5 +1,6 @@
 ﻿namespace School.Abstract
 {
+    using System;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
@@ -27,7 +28,7 @@
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpPost]
-        public virtual Task<string> CreateAsync(TDto dto)
+        public virtual Task<Guid> CreateAsync(TDto dto)
         {
             var model = _mapper.ConvertToModel(dto);
             return _service.CreateAsync(model);
@@ -39,7 +40,7 @@
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpDelete]
-        public virtual Task DeleteAsync(string id)
+        public virtual Task DeleteAsync(Guid id)
         {
             return _service.DeleteAsync(id);
         }
@@ -50,7 +51,7 @@
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpGet]
-        public virtual async Task<TDto> ReadAsync(string id)
+        public virtual async Task<TDto> ReadAsync(Guid id)
         {
             var model = await _service.ReadAsync(id);
             return _mapper.ConvertToDto(model);

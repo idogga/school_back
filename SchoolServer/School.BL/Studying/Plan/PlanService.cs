@@ -22,17 +22,16 @@ namespace School.BL.Studying.Plan
         }
 
         /// <inheritdoc/>
-        public override async Task<string> CreateAsync(PlanClass model)
+        public override async Task<Guid> CreateAsync(PlanClass model)
         {
-            var guid = Guid.NewGuid().ToString();
+            var guid = Guid.NewGuid();
             model.Id = guid;
 
-            var clas = await Context.Classes.FirstOrDefaultAsync(x => x.Id == model.Id);
-            if (clas == default)
-                throw new NotFoundEntityException(typeof(Class), model.Id);
-
+            var clas = await Context.Classes.FirstOrFail(x => x.Id == model.Id);
+            
             model.Class = clas;
 
+            // TODO : rewrite. smth wrong
             var plans = await Context.SubjectPlans.Where(plan => model.SubjectPlans.Any(exists => exists.Id == plan.Id)).ToListAsync();
             if (!plans.Any())
                 throw new NotFoundEntityException(typeof(SubjectPlan), $"{string.Join(", ", model.SubjectPlans.Select(x => x.Id))}");
@@ -46,18 +45,16 @@ namespace School.BL.Studying.Plan
         }
 
         /// <inheritdoc/>
-        public override async Task DeleteAsync(string id)
+        public override async Task DeleteAsync(Guid id)
         {
-            var model = await Context.PlanClasses.FirstOrDefaultAsync(x => x.Id == id);
-            if (model == default)
-                throw new NotFoundEntityException(typeof(PlanClass), id);
-
+            var model = await Context.PlanClasses.FirstOrFail(x => x.Id == id);
+            
             Context.Remove(model);
             await Context.SaveChangesAsync();
         }
 
         /// <inheritdoc/>
-        public override async Task<PlanClass> ReadAsync(string id)
+        public override async Task<PlanClass> ReadAsync(Guid id)
         {
             var model = await Context.PlanClasses
                 .Include(x => x.Class)

@@ -13,20 +13,20 @@
     {
         private readonly SchedulerContext _context;
 
-        public async Task<string> AddAsync(ScheduleLesson lesson)
+        public async Task<Guid> AddAsync(ScheduleLesson lesson)
         {
             ThrowIfNotValidate(lesson);
             await ThrowIdCantInsertAsync(lesson);
-            var id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid();
             lesson.Id = id;
             _context.Add(lesson);
             await _context.SaveChangesAsync();
             return id;
         }
 
-        public async Task DeleteAsync(string lessonId)
+        public async Task DeleteAsync(Guid lessonId)
         {
-            var lesson = await _context.ScheduleLessons.SingleOrDefaultAsync(x => x.Id == lessonId);
+            var lesson = await _context.ScheduleLessons.FirstOrDefaultAsync(x => x.Id == lessonId);
             if (lesson == default) throw new ApplicationException("Не найден");
 
             _context.Remove(lesson);

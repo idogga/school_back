@@ -1,6 +1,7 @@
 ﻿namespace School.BL.Place
 {
     using System;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Microsoft.EntityFrameworkCore;
@@ -16,21 +17,21 @@
         }
 
         /// <inheritdoc cref="CreateAsync"/>
-        public override async Task<string> CreateAsync(Cabinete model)
+        public override async Task<Guid> CreateAsync(Cabinete model)
         {
             var alreadyContains =
                 await Context.Cabinetes.AnyAsync(x => x.Name.Equals(model.Name, StringComparison.CurrentCultureIgnoreCase));
             if (alreadyContains)
                 throw new ApplicationException("Кабинет с таким наименованием уже существует");
 
-            model.Id = Guid.NewGuid().ToString();
+            model.Id = Guid.NewGuid();
             Context.Add(model);
             await Context.SaveChangesAsync();
             return model.Id;
         }
 
         /// <inheritdoc cref="DeleteAsync"/>
-        public override async Task DeleteAsync(string id)
+        public override async Task DeleteAsync(Guid id)
         {
             var cabinet = await Context.Cabinetes.SingleOrDefaultAsync(x => x.Id == id);
             if (cabinet == default)
@@ -41,12 +42,10 @@
         }
 
         /// <inheritdoc cref="ReadAsync"/>
-        public override async Task<Cabinete> ReadAsync(string id)
+        public override async Task<Cabinete> ReadAsync(Guid id)
         {
-            var cabinet = await Context.Cabinetes.AsNoTracking().SingleOrDefaultAsync(x => x.Id == id);
-            if (cabinet == default)
-                throw new ApplicationException("Кабинет с таким идентификатором не существует.");
-
+            var cabinet = await Context.Cabinetes.AsNoTracking().FirstOrFail(x => x.Id == id);
+            
             return cabinet;
         }
 

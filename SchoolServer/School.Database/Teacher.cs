@@ -1,16 +1,16 @@
 ﻿namespace School.Database
 {
-    using System.Collections;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
 
     /// <summary>
     /// Учитель.
     /// </summary>
     public class Teacher : BaseModel
     {
-        public Teacher()
+        public Teacher(string name)
         {
-            Subjects = new List<Subject>();
+            Name = name;
         }
 
         /// <summary>
@@ -21,6 +21,6 @@
         /// <summary>
         /// Список предметов которые учитель может вести.
         /// </summary>
-        public IList<Subject> Subjects { get; set; }
+        public ICollection<Subject> Subjects { get; set; } = new Collection<Subject>();
     }
 }

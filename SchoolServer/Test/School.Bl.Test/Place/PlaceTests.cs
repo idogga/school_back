@@ -36,8 +36,7 @@
             var resultId = await _cabinetService.CreateAsync(model);
 
             // Assert
-            var toGuid = Guid.TryParse(resultId, out _);
-            toGuid.Should().BeTrue();
+            
         }
 
         [TestCase("name", Category = "negative")]
@@ -61,7 +60,7 @@
         public async Task RemoveDuplicatePlace()
         {
             // Prepare
-            var id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid();
 
             // Act
             Action act = () => { _cabinetService.DeleteAsync(id).Wait(); };
@@ -77,7 +76,7 @@
         public async Task RemovePlace()
         {
             // Prepare
-            var id = Guid.NewGuid().ToString();
+            var id = Guid.NewGuid();
             Context.Add(new Cabinete { Name = "name", Id = id });
             await Context.SaveChangesAsync();
 

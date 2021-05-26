@@ -11,7 +11,7 @@
         /// <summary>
         /// Идентификатор класса.
         /// </summary>
-        public string ClassId { get; set; }
+        public Guid ClassId { get; set; }
 
         /// <summary>
         /// Идентификатор.
@@ -21,22 +21,22 @@
         /// <summary>
         /// Запланированный урок.
         /// </summary>
-        public ScheduleLesson Lesson { get; set; }
+        public ScheduleLesson Lesson { get; set; } = null!;
 
         /// <summary>
         /// Идентфикатор предмета.
         /// </summary>
-        public string SubjectId { get; set; }
+        public Guid SubjectId { get; set; }
 
         /// <summary>
         /// Идентифкатор учителя.
         /// </summary>
-        public string TeacherId { get; set; }
+        public Guid TeacherId { get; set; }
 
         /// <summary>
         /// Кабинет.
         /// </summary>
-        public string Cabinete { get; set; }
+        public Guid Cabinete { get; set; }
 
         /// <inheritdoc/>
         public override string ToString()

@@ -4,6 +4,16 @@
         <name>SchoolServerMain</name>
     </assembly>
     <members>
+        <member name="T:SchoolServerMain.Controllers.PlanController">
+            <summary>
+            Контроллер для работы с планами.
+            </summary>
+        </member>
+        <member name="M:SchoolServerMain.Controllers.PlanController.#ctor(School.BL.Studying.Plan.PlanMapper,School.BL.Studying.Plan.PlanService)">
+            <summary>
+            Конструктор.
+            </summary>
+        </member>
         <member name="T:SchoolServerMain.Middleware.HttpStatusCodeExceptionMiddleware">
             <summary>
                 Мидлвара для обработки ошибок при выполнении запроса.

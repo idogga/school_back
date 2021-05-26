@@ -17,10 +17,9 @@
 
         public override Teacher ConvertToModel(TeacherDto dto)
         {
-            return new Teacher
+            return new Teacher(dto.Name)
             {
-                Id = dto.Id,
-                Name = dto.Name
+                Id = dto.Id
             };
         }
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace School.Dto.Plans
 {
@@ -10,11 +11,11 @@ namespace School.Dto.Plans
         /// <summary>
         /// Класс.
         /// </summary>
-        public string ClassId { get; set; }
+        public Guid ClassId { get; set; }
 
         /// <summary>
         /// Планы предметов.
         /// </summary>
-        public IList<string> SubjectPlanIds { get; set; }
+        public IList<Guid> SubjectPlanIds { get; set; } = new List<Guid>();
     }
 }

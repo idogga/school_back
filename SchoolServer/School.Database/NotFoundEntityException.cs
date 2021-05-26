@@ -7,10 +7,20 @@ namespace School.Database
     /// </summary>
     public sealed class NotFoundEntityException: ApplicationException
     {
-        /// <summary>
-        /// Контруктор.
-        /// </summary>
-        public NotFoundEntityException(Type type, string id):base($"Не найдена {type.Name} с идентификатором {id}")
+        public NotFoundEntityException(Type type, Guid id)
+            : base($"Not found {type.Name} with {id}")
+        {
+
+        }
+
+        public NotFoundEntityException(Type type, string id)
+            : base($"Not found {type.Name} with {id}")
+        {
+
+        }
+
+        public NotFoundEntityException(Type type)
+            : base($"Not found {type.Name}")
         {
 
         }

@@ -1,4 +1,6 @@
-﻿namespace School.Database
+﻿using System;
+
+namespace School.Database
 {
     /// <summary>
     /// Базовая модель данных.
@@ -8,6 +10,6 @@
         /// <summary>
         /// Идентификатор.
         /// </summary>
-        public string Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

@@ -1,7 +1,9 @@
-﻿namespace School.Dto
+﻿using System;
+
+namespace School.Dto
 {
     public abstract class BaseDto
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

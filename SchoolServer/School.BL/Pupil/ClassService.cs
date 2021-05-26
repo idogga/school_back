@@ -13,17 +13,17 @@
         {
         }
 
-        public override Task<string> CreateAsync(Class model)
+        public override Task<Guid> CreateAsync(Class model)
         {
             throw new NotImplementedException();
         }
 
-        public override Task DeleteAsync(string id)
+        public override Task DeleteAsync(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public override Task<Class> ReadAsync(string id)
+        public override Task<Class> ReadAsync(Guid id)
         {
             throw new NotImplementedException();
         }

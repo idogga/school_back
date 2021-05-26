@@ -20,7 +20,7 @@
         /// <summary>
         /// Идентификатор.
         /// </summary>
-        public string Id { get; set; }
+        public Guid Id { get; set; }
 
         /// <summary>
         /// Времям начала.

@@ -18,7 +18,7 @@
         /// <summary>
         /// Класс.
         /// </summary>
-        public Class Class { get; set; }
+        public Class Class { get; set; } = null!;
 
         /// <summary>
         /// Планы предметов.
