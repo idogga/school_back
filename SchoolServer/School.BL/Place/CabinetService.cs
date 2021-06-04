@@ -33,10 +33,8 @@
         /// <inheritdoc cref="DeleteAsync"/>
         public override async Task DeleteAsync(Guid id)
         {
-            var cabinet = await Context.Cabinetes.SingleOrDefaultAsync(x => x.Id == id);
-            if (cabinet == default)
-                throw new ApplicationException("Кабинет с таким идентификатором не существует.");
-
+            var cabinet = await Context.Cabinetes.FirstOrFail(x => x.Id == id);
+            
             Context.Remove(cabinet);
             await Context.SaveChangesAsync();
         }

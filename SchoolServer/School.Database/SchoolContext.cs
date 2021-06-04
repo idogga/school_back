@@ -21,32 +21,32 @@
         /// <summary>
         /// Кабинеты.
         /// </summary>
-        public DbSet<Cabinete> Cabinetes { get; set; }
+        public DbSet<Cabinete> Cabinetes => Set<Cabinete>();
 
         /// <summary>
         /// Классы.
         /// </summary>
-        public DbSet<Class> Classes { get; set; }
+        public DbSet<Class> Classes => Set<Class>();
 
         /// <summary>
         /// Планы для класса.
         /// </summary>
-        public DbSet<PlanClass> PlanClasses { get; set; }
+        public DbSet<PlanClass> PlanClasses => Set<PlanClass>();
 
         /// <summary>
         /// Планы для предметов.
         /// </summary>
-        public DbSet<SubjectPlan> SubjectPlans{ get; set; }
+        public DbSet<SubjectPlan> SubjectPlans => Set<SubjectPlan>();
 
         /// <summary>
         /// Предметы.
         /// </summary>
-        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Subject> Subjects => Set<Subject>();
 
         /// <summary>
         /// Учителя.
         /// </summary>
-        public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Teacher> Teachers => Set<Teacher>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

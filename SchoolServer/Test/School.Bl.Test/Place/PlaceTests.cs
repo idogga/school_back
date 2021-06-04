@@ -16,13 +16,13 @@
     [TestFixture]
     public class PlaceTests : BaseTest
     {
+        private CabinetService _cabinetService;
         [SetUp]
-        public void Setup()
+        public override void StartAllServices()
         {
+            base.StartAllServices();
             _cabinetService = new CabinetService(Context);
         }
-
-        private CabinetService _cabinetService;
 
         [TestCase("first", Category = "positive")]
         [TestCase("second", Category = "positive")]
@@ -66,7 +66,7 @@
             Action act = () => { _cabinetService.DeleteAsync(id).Wait(); };
 
             // Assert
-            act.Should().Throw<ApplicationException>();
+            act.Should().Throw<NotFoundEntityException>();
             var allCabinetes = await Context.Cabinetes.Where(x => x.Id == id).ToListAsync();
             allCabinetes.Should().BeEmpty();
         }

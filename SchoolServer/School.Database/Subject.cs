@@ -5,6 +5,11 @@
     /// </summary>
     public class Subject : BaseModel
     {
+        public Subject(string name)
+        {
+            Name = name;
+        }
+
         /// <summary>
         /// Максимальное колличество занятий в неделю.
         /// </summary>

@@ -150,23 +150,20 @@
 
         private void SetSubject()
         {
-            var s1 = new Subject
+            var s1 = new Subject("Biology")
             {
                 Id = Guid.NewGuid(),
-                MaxPerWeek = 10,
-                Name = "Biology"
+                MaxPerWeek = 10
             };
-            var s2 = new Subject
+            var s2 = new Subject("Literatura")
             {
                 Id = Guid.NewGuid(),
-                MaxPerWeek = 20,
-                Name = "Literatura"
+                MaxPerWeek = 20
             };
-            var s3 = new Subject
+            var s3 = new Subject("It")
             {
                 Id = Guid.NewGuid(),
-                MaxPerWeek = 10,
-                Name = "It"
+                MaxPerWeek = 10
             };
             SchoolContext.AddRange(s1, s2, s3);
             SchoolContext.SaveChanges();

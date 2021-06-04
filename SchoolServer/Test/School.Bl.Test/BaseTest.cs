@@ -19,22 +19,25 @@
 
         protected SchoolContext Context { get; private set; }
 
-        [OneTimeSetUp]
-        public void StartAllServices()
+        public virtual void StartAllServices()
         {
             var dbName = Guid.NewGuid().ToString();
 
-            var opts = new DbContextOptionsBuilder<SchoolContext>().UseInMemoryDatabase(dbName, GetOrCreateRoot(dbName)).
-                                                                    ConfigureWarnings(
-                                                                        w => w.Ignore(InMemoryEventId.TransactionIgnoredWarning));
+            var opts = new DbContextOptionsBuilder<SchoolContext>()
+                .UseInMemoryDatabase(dbName, GetOrCreateRoot(dbName))
+                .EnableServiceProviderCaching(false)
+                .ConfigureWarnings(b =>
+                    b.Ignore(CoreEventId.ManyServiceProvidersCreatedWarning));
 
             Context = new SchoolContext(opts.Options);
+            Context.Database.EnsureCreated();
         }
 
-        [OneTimeTearDown]
+        [TearDown]
         public void StopAllServices()
         {
-            Context.Database.EnsureDeleted();
+            Context?.Database.EnsureDeleted();
+            Context?.Dispose();
         }
 
         /// <summary>

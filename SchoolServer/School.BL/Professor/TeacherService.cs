@@ -18,7 +18,7 @@
         {
             model.Id = Guid.NewGuid();
             if (string.IsNullOrEmpty(model.Name))
-                throw new Exception("oh name");
+                throw new ApplicationException("oh name");
 
             await Context.Teachers.AddAsync(model);
             await Context.SaveChangesAsync();
@@ -63,6 +63,17 @@
 
             var subject = await Context.Subjects.FindOrFailAsync(subjectId);
             entity.Subjects.Add(subject);
+            await Context.SaveChangesAsync();
+        }
+
+        public async Task DeleteSubjectAsync(Guid teacherId, Guid subjectId)
+        {
+            var entity = await Context.Teachers
+                .Include(t => t.Subjects.Where(s => s.Id == subjectId))
+                .FirstOrFail(t => t.Id == teacherId);
+
+            var subject = entity.Subjects.FirstOrFail(s => s.Id == subjectId);
+            entity.Subjects.Remove(subject);
             await Context.SaveChangesAsync();
         }
     }

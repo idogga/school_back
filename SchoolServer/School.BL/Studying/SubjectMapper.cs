@@ -24,11 +24,10 @@
         /// <inheritdoc/>
         public override Subject ConvertToModel(SubjectDto dto)
         {
-            return new Subject
+            return new Subject(dto.Name)
             {
                 Id = dto.Id,
-                MaxPerWeek = dto.MaxPerWeek,
-                Name = dto.Name
+                MaxPerWeek = dto.MaxPerWeek
             };
         }
     }
