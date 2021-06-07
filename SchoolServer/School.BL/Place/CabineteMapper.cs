@@ -1,27 +1,23 @@
 ﻿namespace School.BL.Place
 {
+    using AutoMapper;
     using School.Abstract;
     using School.Database;
     using School.Dto;
+    using School.Dto.Cabinetes;
 
-    public class CabineteMapper : MapperService<CabineteDto, Cabinete>
+    public class CabineteMapper : Profile, IMapperBuilder
     {
-        public override CabineteDto ConvertToDto(Cabinete model)
+        public CabineteMapper()
         {
-            return new CabineteDto
-            {
-                Id = model.Id,
-                Name = model.Name
-            };
+            CreateMap<Cabinete, CabineteDto>();
+            CreateMap<CabineteDto, Cabinete>();
+            CreateMap<CreateCabineteDto, Cabinete>();
         }
 
-        public override Cabinete ConvertToModel(CabineteDto dto)
+        public Profile Build()
         {
-            return new Cabinete
-            {
-                Id = dto.Id,
-                Name = dto.Name
-            };
+            return this;
         }
     }
 }

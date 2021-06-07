@@ -4,7 +4,7 @@ using System.Text;
 
 namespace School.Dto.Facts
 {
-    public class FactLessonDto:BaseDto
+    public class FactLessonDto : BaseDto
     {
     }
 }

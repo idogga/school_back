@@ -5,6 +5,12 @@
     /// </summary>
     public class Class : BaseModel
     {
+        public Class(int grade, char litera)
+        {
+            Grade = grade;
+            Litera = litera;
+        }
+
         /// <summary>
         /// Уровень.
         /// </summary>

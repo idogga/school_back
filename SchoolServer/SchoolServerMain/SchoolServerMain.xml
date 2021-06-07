@@ -4,15 +4,51 @@
         <name>SchoolServerMain</name>
     </assembly>
     <members>
+        <member name="M:SchoolServerMain.Controllers.CabineteController.#ctor(AutoMapper.IMapper,School.BL.Place.CabinetService)">
+            <summary>
+            Контруктор.
+            </summary>
+        </member>
+        <member name="M:SchoolServerMain.Controllers.ClassController.#ctor(AutoMapper.IMapper,School.BL.Pupil.ClassService)">
+            <summary>
+            Конструктор.
+            </summary>
+        </member>
         <member name="T:SchoolServerMain.Controllers.PlanController">
             <summary>
             Контроллер для работы с планами.
             </summary>
         </member>
-        <member name="M:SchoolServerMain.Controllers.PlanController.#ctor(School.BL.Studying.Plan.PlanMapper,School.BL.Studying.Plan.PlanService)">
+        <member name="M:SchoolServerMain.Controllers.PlanController.#ctor(AutoMapper.IMapper,School.BL.Studying.Plan.PlanService)">
             <summary>
             Конструктор.
             </summary>
+        </member>
+        <member name="M:SchoolServerMain.Controllers.SubjectController.#ctor(AutoMapper.IMapper,School.BL.Studying.SubjectService)">
+            <summary>
+            Конструктор.
+            </summary>
+        </member>
+        <member name="M:SchoolServerMain.Controllers.TeacherController.#ctor(AutoMapper.IMapper,School.BL.Professor.TeacherService)">
+            <summary>
+            КОнчтруктор.
+            </summary>
+        </member>
+        <member name="M:SchoolServerMain.Controllers.TeacherController.AddSubjectAsync(System.Guid,System.Guid)">
+            <summary>
+            Добавить предмет учителю.
+            </summary>
+            <param name="teacherId">Идентификатор учителя.</param>
+            <param name="subjectId">Идентификатор предмета.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SchoolServerMain.Controllers.TeacherController.DeleteSubjectAsync(System.Guid,System.Guid)">
+            <summary>
+            Удалить предмет из списка.
+            </summary>
+            <param name="teacherId">Идентифкатор учителя.</param>
+            <param name="subjectId">Идентификатор предмета.</param>
+            <returns></returns>
         </member>
         <member name="T:SchoolServerMain.Middleware.HttpStatusCodeExceptionMiddleware">
             <summary>

@@ -1,21 +1,23 @@
 ﻿namespace School.BL.Pupil
 {
-    using System;
-
+    using AutoMapper;
     using School.Abstract;
     using School.Database;
     using School.Dto;
+    using School.Dto.Classes;
 
-    public class ClassMapper : MapperService<ClassDto, Class>
+    public class ClassMapper : Profile, IMapperBuilder
     {
-        public override ClassDto ConvertToDto(Class model)
+        public ClassMapper()
         {
-            throw new NotImplementedException();
+            CreateMap<Class, ClassDto>();
+            CreateMap<ClassDto, Class>();
+            CreateMap<CreateClassDto, Class>();
         }
 
-        public override Class ConvertToModel(ClassDto dto)
+        public Profile Build()
         {
-            throw new NotImplementedException();
+            return this;
         }
     }
 }

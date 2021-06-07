@@ -1,4 +1,5 @@
-﻿using School.Abstract;
+﻿using AutoMapper;
+using School.Abstract;
 using School.Database;
 using School.Dto.Plans;
 using System;
@@ -13,28 +14,19 @@ namespace School.BL.Studying.Plan
     /// <summary>
     /// Маппер для перегона файлов в <see cref="PlanClass"/>.
     /// </summary>
-    public class PlanMapper : MapperService<PlanDto, PlanClass>
+    public class PlanMapper : Profile, IMapperBuilder
     {
-        /// <inheritdoc/>
-        public override PlanDto ConvertToDto(PlanClass model)
+        public PlanMapper()
         {
-            return new PlanDto
-            {
-                ClassId = model.Class.Id,
-                Id = model.Id,
-                SubjectPlanIds = model.SubjectPlans.Select(x => x.Id).ToList()
-            };
+            CreateMap<PlanClass, PlanDto>()
+                .ForMember(dest => dest.SubjectPlanIds, opt => opt.MapFrom(src => src.SubjectPlans.Select(s => s.Id)))
+                .ForMember(dest => dest.ClassId, opt => opt.MapFrom(src => src.Class.Id));
+            CreateMap<PlanDto, PlanClass>();
         }
 
-        /// <inheritdoc/>
-        public override PlanClass ConvertToModel(PlanDto dto)
+        public Profile Build()
         {
-            var list = dto.SubjectPlanIds.Select(x => new SubjectPlan { Id = x }).ToList();
-            return new PlanClass
-            {
-                Id = dto.Id,
-                SubjectPlans = new Collection<SubjectPlan>(list)
-            };
+            return this;
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     using System;
     using System.Threading.Tasks;
-
+    using AutoMapper;
     using Microsoft.AspNetCore.Mvc;
 
     /// <summary>
@@ -10,13 +10,13 @@
     /// </summary>
     /// <typeparam name="TDto"></typeparam>
     /// <typeparam name="TModel"></typeparam>
-    public abstract class CrudController<TDto, TModel> : ControllerBase
+    public abstract class CrudController<CTDto, TDto, TModel> : ControllerBase
     {
-        protected readonly MapperService<TDto, TModel> _mapper;
+        protected readonly IMapper _mapper;
 
         protected readonly CrudService<TModel> _service;
 
-        public CrudController(MapperService<TDto, TModel> mapper, CrudService<TModel> service)
+        public CrudController(IMapper mapper, CrudService<TModel> service)
         {
             _mapper = mapper;
             _service = service;
@@ -28,9 +28,9 @@
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpPost]
-        public virtual Task<Guid> CreateAsync(TDto dto)
+        public virtual Task<Guid> CreateAsync(CTDto dto)
         {
-            var model = _mapper.ConvertToModel(dto);
+            var model = _mapper.Map<TModel>(dto);
             return _service.CreateAsync(model);
         }
 
@@ -39,7 +39,7 @@
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public virtual Task DeleteAsync(Guid id)
         {
             return _service.DeleteAsync(id);
@@ -50,11 +50,11 @@
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("{id}")]
         public virtual async Task<TDto> ReadAsync(Guid id)
         {
             var model = await _service.ReadAsync(id);
-            return _mapper.ConvertToDto(model);
+            return _mapper.Map<TDto>(model);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@
         [HttpPut]
         public virtual async Task UpdateAsync(TDto dto)
         {
-            var modelToUpdate = _mapper.ConvertToModel(dto);
+            var modelToUpdate = _mapper.Map<TModel>(dto);
             await _service.UpdateAsync(modelToUpdate);
         }
     }

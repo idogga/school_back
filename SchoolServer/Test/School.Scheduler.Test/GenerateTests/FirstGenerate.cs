@@ -171,23 +171,17 @@
 
         private void SetClass()
         {
-            var c1 = new Class
+            var c1 = new Class(1, 'a')
             {
                 Id = Guid.NewGuid(),
-                Grade = 1,
-                Litera = 'a'
             };
-            var c2 = new Class
+            var c2 = new Class(2, 'b')
             {
                 Id = Guid.NewGuid(),
-                Grade = 2,
-                Litera = 'b'
             };
-            var c3 = new Class
+            var c3 = new Class(3, 'c')
             {
                 Id = Guid.NewGuid(),
-                Grade = 3,
-                Litera = 'c'
             };
             SchoolContext.AddRange(c1, c2, c3);
             SchoolContext.SaveChanges();

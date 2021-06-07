@@ -1,26 +1,24 @@
 ﻿namespace School.BL.Professor
 {
+    using AutoMapper;
     using School.Abstract;
     using School.Database;
     using School.Dto;
+    using System.Linq;
 
-    public class TeacherMapper : MapperService<TeacherDto, Teacher>
+    public class TeacherMapper : Profile, IMapperBuilder
     {
-        public override TeacherDto ConvertToDto(Teacher model)
+        public TeacherMapper()
         {
-            return new TeacherDto
-            {
-                Id = model.Id,
-                Name = model.Name
-            };
+            CreateMap<Teacher, TeacherDto>()
+                .ForMember(dest => dest.Subjects, opt => opt.MapFrom(src => src.Subjects.Select(s => s.Id)));
+
+            CreateMap<TeacherDto, Teacher>();
         }
 
-        public override Teacher ConvertToModel(TeacherDto dto)
+        public Profile Build()
         {
-            return new Teacher(dto.Name)
-            {
-                Id = dto.Id
-            };
+            return this;
         }
     }
 }

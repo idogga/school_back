@@ -20,7 +20,7 @@
         public override async Task<Guid> CreateAsync(Cabinete model)
         {
             var alreadyContains =
-                await Context.Cabinetes.AnyAsync(x => x.Name.Equals(model.Name, StringComparison.CurrentCultureIgnoreCase));
+                await Context.Cabinetes.AnyAsync(x => x.Name.Equals(model.Name));
             if (alreadyContains)
                 throw new ApplicationException("Кабинет с таким наименованием уже существует");
 
@@ -48,9 +48,11 @@
         }
 
         /// <inheritdoc cref="UpdateAsync"/>
-        public override Task UpdateAsync(Cabinete model)
+        public override async Task UpdateAsync(Cabinete model)
         {
-            throw new NotImplementedException();
+            var cabinet = await Context.Cabinetes.FirstOrFail(x => x.Id == model.Id);
+            cabinet.Name = model.Name;
+            await Context.SaveChangesAsync();
         }
     }
 }

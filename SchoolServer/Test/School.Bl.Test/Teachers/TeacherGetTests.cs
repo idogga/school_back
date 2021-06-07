@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace School.Bl.Test.Teachers
 {
+    [TestFixture]
     public class TeacherGetTests : BaseTest
     {
         private TeacherService _teacherService;

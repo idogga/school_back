@@ -1,34 +1,26 @@
 ﻿namespace School.BL.Studying
 {
-
+    using AutoMapper;
     using School.Abstract;
     using School.Database;
     using School.Dto;
+    using School.Dto.Subjects;
 
     /// <summary>
     /// Маппер для <see cref="Subject"/>.
     /// </summary>
-    public class SubjectMapper : MapperService<SubjectDto, Subject>
+    public class SubjectMapper : Profile, IMapperBuilder
     {
-        /// <inheritdoc/>
-        public override SubjectDto ConvertToDto(Subject model)
+        public SubjectMapper()
         {
-            return new SubjectDto
-            {
-                Id = model.Id,
-                Name = model.Name,
-                MaxPerWeek = model.MaxPerWeek
-            };
+            CreateMap<SubjectDto, Subject>();
+            CreateMap<CreateSubjectDto, Subject>();
+            CreateMap<Subject, SubjectDto>();
         }
 
-        /// <inheritdoc/>
-        public override Subject ConvertToModel(SubjectDto dto)
+        public Profile Build()
         {
-            return new Subject(dto.Name)
-            {
-                Id = dto.Id,
-                MaxPerWeek = dto.MaxPerWeek
-            };
+            return this;
         }
     }
 }
